@@ -1,18 +1,18 @@
 import 'package:amanportfolio/utils/Colors/custom_colors.dart';
+// ignore: unnecessary_import
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:lottie/lottie.dart';
-import '../../Controller/All_Section_Controller.dart';
-import '../../Controller/theme_controller.dart';
-import '../custom_button.dart';
+import '../../../Controller/All_Section_Controller.dart';
+import '../../../Controller/theme_controller.dart';
+import '../../custom_button.dart';
 
 class ThirdSection extends StatelessWidget {
   final AllSectionController controller = Get.find<AllSectionController>();
   final ThemeController themeController = Get.find<ThemeController>();
-  ThirdSection({Key? key}) : super(key: key);
+  ThirdSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -105,13 +105,10 @@ class ThirdSection extends StatelessWidget {
               fit: BoxFit.contain,
             ),
             const SizedBox(height: 20.0),
-            const CustomButton(
+            CustomButton(
               buttonText: 'View More',
-              buttonIcon: Icon(
-                Iconsax.user,
-                color: ColorResources.whiteColor,
-              ),
               isbuttonShow: false,
+              onPressed: () {},
             ),
           ],
         ),

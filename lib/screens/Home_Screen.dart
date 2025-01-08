@@ -1,24 +1,28 @@
-import 'package:amanportfolio/Widgets/fiveSection/five_section.dart';
+import 'package:amanportfolio/Widgets/floatingActionButton.dart';
+import 'package:amanportfolio/Widgets/HomeWidgets/fiveSection/five_section.dart';
 import 'package:amanportfolio/Widgets/navigation_bar.dart';
 import 'package:amanportfolio/utils/Colors/custom_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../Controller/theme_controller.dart';
-import '../Widgets/FirstSection/first_section.dart';
-import '../Widgets/FourthSection/fourth_section.dart';
-import '../Widgets/SecondSection/second_section.dart';
-import '../Widgets/ThirdSection/third_section.dart';
+import '../Widgets/HomeWidgets/FirstSection/first_section.dart';
+import '../Widgets/HomeWidgets/FourthSection/fourth_section.dart';
+import '../Widgets/HomeWidgets/SecondSection/second_section.dart';
+import '../Widgets/HomeWidgets/ThirdSection/third_section.dart';
 
 class HomeScreen extends StatelessWidget {
   final ThemeController themeController = Get.find<ThemeController>();
-  HomeScreen({Key? key}) : super(key: key);
+  final ScrollController _scrollController = ScrollController();
+
+  HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return AnnotatedRegion(
+    return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light,
       child: Scaffold(
-        endDrawer: const MobileNavigationDrawer(),
+        endDrawer: MobileNavigationDrawer(),
         backgroundColor: themeController.containerColor,
         body: ScrollbarTheme(
           data: ScrollbarThemeData(
@@ -29,6 +33,7 @@ class HomeScreen extends StatelessWidget {
           child: Scrollbar(
             thumbVisibility: true,
             child: SingleChildScrollView(
+              controller: _scrollController,
               physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
@@ -42,6 +47,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
+        floatingActionButton: floatingActionsbutton(scrollController: _scrollController),
       ),
     );
   }

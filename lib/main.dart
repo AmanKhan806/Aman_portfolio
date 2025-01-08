@@ -1,7 +1,5 @@
 import 'package:amanportfolio/Controller/All_Section_Controller.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'Controller/theme_controller.dart';

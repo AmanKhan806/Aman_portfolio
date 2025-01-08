@@ -1,45 +1,79 @@
+import 'package:amanportfolio/Widgets/custom_confetti.dart';
+import 'package:confetti/confetti.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../Controller/Navigation_controller.dart';
 import '../Controller/theme_controller.dart';
 import '../utils/Colors/custom_colors.dart';
 
 class CustomNavigationBar extends StatelessWidget {
-  const CustomNavigationBar({
-    super.key,
-  });
+  final ConfettiController confettiController = Get.put(ConfettiController());
+  final NavigationController navigationController =
+      Get.put(NavigationController());
+
+  CustomNavigationBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 70,
-      margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
-      decoration: BoxDecoration(
-        color: ColorResources.appMainColor,
-        borderRadius: BorderRadius.circular(30.0),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            blurRadius: 10.0,
-            spreadRadius: 2.0,
-            offset: const Offset(0, 4),
+    return Stack(
+      children: [
+        Container(
+          height: 70,
+          margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
+          decoration: BoxDecoration(
+            color: ColorResources.appMainColor,
+            borderRadius: BorderRadius.circular(30.0),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                blurRadius: 10.0,
+                spreadRadius: 2.0,
+                offset: const Offset(0, 4),
+              ),
+            ],
           ),
-        ],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          _buildNavItem("Home", isActive: true),
-          _buildNavItem("About"),
-          _buildNavItem("Resume"),
-          _buildIconNavItem(),
-          _buildNavItem("Portfolio"),
-          _buildNavItem("Contact"),
-          _buildSwitchButton(),
-        ],
-      ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              _buildNavItem("Home",
+                  isActive: navigationController.activeTab.value == 'Home'),
+              _buildNavItem("About",
+                  isActive: navigationController.activeTab.value == 'About'),
+              _buildNavItem("Resume",
+                  isActive: navigationController.activeTab.value == 'Resume'),
+              _buildIconNavItem(),
+              _buildNavItem("Portfolio",
+                  isActive:
+                      navigationController.activeTab.value == 'Portfolio'),
+              _buildNavItem("Contact",
+                  isActive: navigationController.activeTab.value == 'Contact'),
+              buildSwitchButton(),
+            ],
+          ),
+        ),
+        Align(
+          alignment: Alignment.center,
+          child: CustomConfettiWidget(
+            confettiController: confettiController,
+            blastDirectionality: BlastDirectionality.explosive,
+            numberOfParticles: 20,
+            colors: const [
+              Colors.red,
+              Colors.green,
+              Colors.blue,
+              Colors.orange,
+              Colors.purple,
+            ],
+            gravity: 0.3,
+            maxBlastForce: 30,
+            minBlastForce: 10,
+            shouldLoop: false,
+          ),
+        ),
+      ],
     );
   }
 }
@@ -86,7 +120,9 @@ class CustomNavigationBarforMobile extends StatelessWidget {
 }
 
 class MobileNavigationDrawer extends StatelessWidget {
-  const MobileNavigationDrawer({super.key});
+  final NavigationController navigationController =
+      Get.put(NavigationController());
+  MobileNavigationDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -98,19 +134,20 @@ class MobileNavigationDrawer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 50.0),
-            _buildNavItem("Home", isActive: true),
+            _buildNavItem("Home",
+                isActive: navigationController.activeTab.value == 'Home'),
             const SizedBox(height: 20.0),
-            _buildNavItem("About"),
+            _buildNavItem("About", isActive: navigationController.activeTab.value == 'About'),
             const SizedBox(height: 20.0),
-            _buildNavItem("Resume"),
+            _buildNavItem("Resume", isActive: navigationController.activeTab.value == 'Resume'),
             const SizedBox(height: 20.0),
-            _buildNavItem("Portfolio"),
+            _buildNavItem("Portfolio", isActive: navigationController.activeTab.value == 'Portfolio'),
             const SizedBox(height: 20.0),
-            _buildNavItem("Contact"),
+            _buildNavItem("Contact", isActive: navigationController.activeTab.value == 'Contact'),
             const Spacer(),
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: _buildSwitchButton(),
+              child: buildSwitchButton(),
             ),
           ],
         ),
@@ -132,26 +169,43 @@ Widget _buildIconNavItem() {
 }
 
 Widget _buildNavItem(String title, {bool isActive = false}) {
-  return Container(
-    padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 8.0),
-    decoration: BoxDecoration(
-      color: isActive ? ColorResources.whiteColor : Colors.transparent,
-      borderRadius: BorderRadius.circular(20.0),
-    ),
-    child: Text(title,
+  final NavigationController navigationController =
+      Get.find<NavigationController>();
+  return GestureDetector(
+    onTap: () {
+      navigationController.updateActiveTabAndNavigate(title);
+    },
+    child: Container(
+      padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 8.0),
+      decoration: BoxDecoration(
+        color: isActive ? ColorResources.whiteColor : Colors.transparent,
+        borderRadius: BorderRadius.circular(20.0),
+      ),
+      child: Text(
+        title,
         style: GoogleFonts.ubuntu(
           color: isActive ? ColorResources.greyOneColor : Colors.white,
           fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
-        )),
+        ),
+      ),
+    ),
   );
 }
 
-Widget _buildSwitchButton() {
+Widget buildSwitchButton() {
+  final ConfettiController confettiController = Get.put(ConfettiController());
   final ThemeController themeController = Get.put(ThemeController());
+
   return Obx(() {
     return Switch(
       value: themeController.isDarkMode.value,
-      onChanged: (value) => themeController.toggleTheme(),
+      onChanged: (value) {
+        themeController.toggleTheme();
+        confettiController.play();
+        Future.delayed(const Duration(seconds: 1), () {
+          confettiController.stop();
+        });
+      },
       activeColor: Colors.white,
       activeTrackColor: Colors.orange.shade300,
       inactiveThumbColor: Colors.white,

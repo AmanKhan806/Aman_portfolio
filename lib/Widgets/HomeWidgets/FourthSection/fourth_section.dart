@@ -1,13 +1,11 @@
 import 'package:amanportfolio/utils/Colors/custom_colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:iconsax/iconsax.dart';
-import '../../Controller/All_Section_Controller.dart';
-import '../../Controller/theme_controller.dart';
-import '../AnimatedGradientText/Animated_Gradienttext.dart';
-import '../custom_button.dart';
+import '../../../Controller/All_Section_Controller.dart';
+import '../../../Controller/theme_controller.dart';
+import '../../Animated_Gradienttext.dart';
+import '../../custom_button.dart';
 
 class FourthSection extends StatelessWidget {
   final AllSectionController controller = Get.find<AllSectionController>();
@@ -98,15 +96,15 @@ class FourthSection extends StatelessWidget {
             const SizedBox(height: 20.0),
             Align(
               alignment: Alignment.center,
-              child: !isMobile ? 
-              AnimatedGradientText(
-                text: "Flutter",
-                fontSize: 200,
-              ): 
-              AnimatedGradientText(
-                text: "Flutter",
-                fontSize: 100,
-              ),
+              child: !isMobile
+                  ? const AnimatedGradientText(
+                      text: "Flutter",
+                      fontSize: 200,
+                    )
+                  : const AnimatedGradientText(
+                      text: "Flutter",
+                      fontSize: 100,
+                    ),
             ),
             const SizedBox(height: 20.0),
             GridView.builder(
@@ -118,7 +116,7 @@ class FourthSection extends StatelessWidget {
                 crossAxisSpacing: 10.0,
                 childAspectRatio: isMobile ? 0.7 : 0.8,
               ),
-              itemCount: controller.fourthSectionData.length,
+              itemCount: 6,
               itemBuilder: (context, index) {
                 var data = controller.fourthSectionData[index];
                 return ProjectCard(
@@ -136,15 +134,12 @@ class FourthSection extends StatelessWidget {
               },
             ),
             const SizedBox(height: 20.0),
-            const Align(
+            Align(
               alignment: Alignment.center,
               child: CustomButton(
                 buttonText: 'View More',
-                buttonIcon: Icon(
-                  Iconsax.user,
-                  color: ColorResources.whiteColor,
-                ),
                 isbuttonShow: false,
+                onPressed: () {},
               ),
             ),
           ],
@@ -247,11 +242,12 @@ class ProjectCard extends StatelessWidget {
                   .toList(),
             ),
             const SizedBox(height: 15),
-            const Align(
+            Align(
                 alignment: Alignment.centerLeft,
                 child: CustomButton(
                   isbuttonShow: false,
                   buttonText: 'View Project',
+                  onPressed: () {},
                 ))
           ],
         ),

@@ -2,8 +2,8 @@ import 'package:amanportfolio/utils/Colors/custom_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../Controller/rotation_controller.dart';
-import '../../Controller/theme_controller.dart';
+import '../../../Controller/rotation_controller.dart';
+import '../../../Controller/theme_controller.dart';
 
 class FiveSection extends StatelessWidget {
   final RotationController rotationController = Get.put(RotationController());

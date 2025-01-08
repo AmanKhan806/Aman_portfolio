@@ -1,6 +1,5 @@
 import 'package:amanportfolio/Controller/theme_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 import '../utils/Colors/custom_colors.dart';

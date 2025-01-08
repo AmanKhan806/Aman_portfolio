@@ -1,14 +1,12 @@
 import 'package:amanportfolio/utils/Colors/custom_colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:iconsax/iconsax.dart';
-import '../../Controller/theme_controller.dart';
-import '../custom_button.dart';
+import '../../../Controller/theme_controller.dart';
+import '../../custom_button.dart';
 
 class SecondSection extends StatelessWidget {
-  const SecondSection({Key? key}) : super(key: key);
+  const SecondSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -212,13 +210,10 @@ class SecondSection extends StatelessWidget {
             const SizedBox(
               height: 25.0,
             ),
-            const CustomButton(
+            CustomButton(
               buttonText: 'More Info About me',
-              buttonIcon: Icon(
-                Iconsax.user,
-                color: ColorResources.whiteColor,
-              ),
               isbuttonShow: false,
+              onPressed: () {},
             ),
           ],
         ),
@@ -233,11 +228,11 @@ class GradientText extends StatelessWidget {
   final Gradient gradient;
 
   const GradientText({
-    Key? key,
+    super.key,
     required this.text,
     required this.style,
     required this.gradient,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

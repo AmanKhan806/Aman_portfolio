@@ -6,8 +6,9 @@ class CustomButton extends StatelessWidget {
   final String buttonText;
   final Icon? buttonIcon; 
   final bool isbuttonShow;
+  final VoidCallback onPressed;
   const CustomButton({
-    super.key, required this.buttonText, this.buttonIcon, required this.isbuttonShow,
+    super.key, required this.buttonText, this.buttonIcon, required this.isbuttonShow, required this.onPressed,
   });
 
   @override
@@ -35,7 +36,7 @@ class CustomButton extends StatelessWidget {
       child: 
       isbuttonShow == true ? 
       ElevatedButton.icon(
-        onPressed: () {},
+        onPressed: onPressed,
         icon: buttonIcon,
         label: Text(
           buttonText,
@@ -58,7 +59,7 @@ class CustomButton extends StatelessWidget {
           ),
         ),
       ): ElevatedButton(
-        onPressed: () {},
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           elevation: 0,
           backgroundColor: Colors.transparent,

@@ -5,14 +5,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
-import '../../Controller/theme_controller.dart';
-import '../../utils/Colors/custom_colors.dart';
-import '../custom_button.dart';
-import '../navigation_bar.dart';
+import '../../../Controller/theme_controller.dart';
+import '../../../utils/Colors/custom_colors.dart';
+import '../../custom_button.dart';
+import '../../navigation_bar.dart';
 
 class FirstSection extends StatelessWidget {
   final ThemeController themeController = Get.find<ThemeController>();
-   FirstSection({
+  FirstSection({
     super.key,
   });
 
@@ -26,7 +26,7 @@ class FirstSection extends StatelessWidget {
     double buttonPadding = screenWidth > 800 ? 16.0 : 12.0;
 
     return Obx(
-      ()=> Container(
+      () => Container(
         color: themeController.containerColor,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -34,7 +34,7 @@ class FirstSection extends StatelessWidget {
               ? Column(
                   children: [
                     const SizedBox(height: 20),
-                    const CustomNavigationBar(),
+                    CustomNavigationBar(),
                     const SizedBox(height: 30),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -110,7 +110,8 @@ class FirstSection extends StatelessWidget {
                                           vertical: buttonPadding,
                                         ),
                                         shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(12),
+                                          borderRadius:
+                                              BorderRadius.circular(12),
                                         ),
                                         backgroundColor: Colors.grey[800],
                                         shadowColor: Colors.black54,
@@ -126,13 +127,14 @@ class FirstSection extends StatelessWidget {
                                       ),
                                     ),
                                     const SizedBox(width: 16),
-                                    const CustomButton(
+                                    CustomButton(
                                       buttonText: 'Download CV',
-                                      buttonIcon: Icon(
+                                      buttonIcon: const Icon(
                                         Iconsax.document_download,
                                         color: ColorResources.whiteColor,
                                       ),
                                       isbuttonShow: true,
+                                      onPressed: () {},
                                     ),
                                   ],
                                 ),
@@ -153,7 +155,8 @@ class FirstSection extends StatelessWidget {
                                   repeat: true,
                                   child: Material(
                                     elevation: 12.0,
-                                    surfaceTintColor: ColorResources.appMainColor
+                                    surfaceTintColor: ColorResources
+                                        .appMainColor
                                         .withOpacity(0.5),
                                     color: const Color.fromARGB(0, 255, 0, 0),
                                     shape: const CircleBorder(),
@@ -190,52 +193,52 @@ class FirstSection extends StatelessWidget {
                               ],
                             ),
                           ),
-                            Expanded(
-                              flex: 0,
-                              child: Column(
-                                children: [
-                                  Transform.rotate(
-                                    angle: 1.57,
-                                    child: Text(
-                                      'Follow me on ------------',
-                                      style: GoogleFonts.ubuntu(
-                                        color: ColorResources.appMainColor,
-                                        fontSize: subTitleFontSize,
-                                        fontWeight: FontWeight.w600,
-                                        height: 1.5,
+                          Expanded(
+                            flex: 0,
+                            child: Column(
+                              children: [
+                                Transform.rotate(
+                                  angle: 1.57,
+                                  child: Text(
+                                    'Follow me on ------------',
+                                    style: GoogleFonts.ubuntu(
+                                      color: ColorResources.appMainColor,
+                                      fontSize: subTitleFontSize,
+                                      fontWeight: FontWeight.w600,
+                                      height: 1.5,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 100.0,
+                                ),
+                                Transform.rotate(
+                                  angle: 1.57,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      IconButton(
+                                        icon: SvgPicture.asset(
+                                          'assets/linkedin.svg',
+                                          height: 35,
+                                          width: 35,
+                                        ),
+                                        onPressed: () {},
                                       ),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 100.0,
-                                  ),
-                                  Transform.rotate(
-                                    angle: 1.57,
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        IconButton(
-                                          icon: SvgPicture.asset(
-                                            'assets/linkedin.svg',
-                                            height: 35,
-                                            width: 35,
-                                          ),
-                                          onPressed: () {},
+                                      IconButton(
+                                        icon: SvgPicture.asset(
+                                          'assets/instagram.svg',
+                                          height: 45,
+                                          width: 45,
                                         ),
-                                        IconButton(
-                                          icon: SvgPicture.asset(
-                                            'assets/instagram.svg',
-                                            height: 45,
-                                            width: 45,
-                                          ),
-                                          onPressed: () {},
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
+                                        onPressed: () {},
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
                             ),
+                          ),
                         ],
                       ),
                     ),
@@ -243,60 +246,60 @@ class FirstSection extends StatelessWidget {
                   ],
                 )
               : Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const SizedBox(height: 20),
                     const CustomNavigationBarforMobile(),
                     const SizedBox(height: 30),
                     Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              AvatarGlow(
-                                glowColor: ColorResources.appMainColor,
-                                duration: const Duration(milliseconds: 2500),
-                                glowShape: BoxShape.circle,
-                                glowCount: 3,
-                                curve: Curves.easeInOutCubic,
-                                repeat: true,
-                                child: Material(
-                                  elevation: 12.0,
-                                  surfaceTintColor: ColorResources.appMainColor
-                                      .withOpacity(0.5),
-                                  color: const Color.fromARGB(0, 255, 0, 0),
-                                  shape: const CircleBorder(),
-                                  shadowColor: ColorResources.greyOneColor,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: ClipOval(
-                                      child: Image.asset(
-                                        "assets/picture1.png",
-                                        fit: BoxFit.cover,
-                                        width: imageWidth,
-                                      ),
-                                    ),
-                                  ),
+                      alignment: Alignment.center,
+                      children: [
+                        AvatarGlow(
+                          glowColor: ColorResources.appMainColor,
+                          duration: const Duration(milliseconds: 2500),
+                          glowShape: BoxShape.circle,
+                          glowCount: 3,
+                          curve: Curves.easeInOutCubic,
+                          repeat: true,
+                          child: Material(
+                            elevation: 12.0,
+                            surfaceTintColor:
+                                ColorResources.appMainColor.withOpacity(0.5),
+                            color: const Color.fromARGB(0, 255, 0, 0),
+                            shape: const CircleBorder(),
+                            shadowColor: ColorResources.greyOneColor,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ClipOval(
+                                child: Image.asset(
+                                  "assets/picture1.png",
+                                  fit: BoxFit.cover,
+                                  width: imageWidth,
                                 ),
                               ),
-                              Positioned(
-                                child: Container(
-                                  width: avatarGlowSize,
-                                  height: avatarGlowSize,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    gradient: RadialGradient(
-                                      colors: [
-                                        Colors.orange.withOpacity(0.1),
-                                        Colors.white.withOpacity(0.3),
-                                        Colors.transparent
-                                      ],
-                                      stops: const [0.5, 0.8, 1.0],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
+                        ),
+                        Positioned(
+                          child: Container(
+                            width: avatarGlowSize,
+                            height: avatarGlowSize,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              gradient: RadialGradient(
+                                colors: [
+                                  Colors.orange.withOpacity(0.1),
+                                  Colors.white.withOpacity(0.3),
+                                  Colors.transparent
+                                ],
+                                stops: const [0.5, 0.8, 1.0],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30.0),
                       child: Column(
@@ -356,13 +359,14 @@ class FirstSection extends StatelessWidget {
                             fontSize: subTitleFontSize,
                           ),
                           const SizedBox(height: 30),
-                          const CustomButton(
+                          CustomButton(
                             buttonText: 'Download CV',
-                            buttonIcon: Icon(
+                            buttonIcon: const Icon(
                               Iconsax.document_download,
                               color: ColorResources.whiteColor,
                             ),
                             isbuttonShow: true,
+                            onPressed: () {},
                           ),
                         ],
                       ),

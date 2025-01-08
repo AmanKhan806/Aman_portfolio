@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';

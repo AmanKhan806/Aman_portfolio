@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../Controller/Animated_Controller.dart';
-import '../../utils/Colors/custom_colors.dart';
+import '../Controller/Animated_Controller.dart';
+import '../utils/Colors/custom_colors.dart';
 
 class AnimatedGradientText extends StatelessWidget {
   final String text;
   final double fontSize;
 
-  AnimatedGradientText({
-    Key? key,
+  const AnimatedGradientText({
+    super.key,
     required this.text,
     required this.fontSize,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     final AnimatedGradientController gradientController =
-        Get.put(AnimatedGradientController()); // Get the controller
+        Get.put(AnimatedGradientController());
 
     return AnimatedBuilder(
       animation: gradientController.animationController,
