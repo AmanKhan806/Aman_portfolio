@@ -4,17 +4,26 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../Controller/theme_controller.dart';
+import '../../Controller/All_Section_Controller.dart';
+import 'AboutMe/about_me_section.dart';
+import 'Skills/skills_section.dart';
 
 class FirstSectionAbout extends StatelessWidget {
-  final ThemeController themeController = Get.find<ThemeController>();
+  final ThemeController themeController = Get.put(ThemeController());
+  final AllSectionController controller = Get.put(AllSectionController());
   FirstSectionAbout({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
+    controller.fetchSkillsData();
     double screenWidth = MediaQuery.of(context).size.width;
-
+    double imageWidth = screenWidth > 800 ? 280 : 180;
+    double avatarGlowSize = screenWidth > 800 ? 350 : 250;
+    double baseFontSize = screenWidth > 800 ? 20 : 16;
+    double headingFontSize = screenWidth > 800 ? 38 : 28;
+    double imageSize = screenWidth > 800 ? 50 : 40;
     return Obx(
       () => Container(
         color: themeController.containerColor,
@@ -31,7 +40,10 @@ class FirstSectionAbout extends StatelessWidget {
                       text: "Learn More About Me",
                       fontSize: 100,
                     )),
-                const SizedBox(height: 30.0)
+                const SizedBox(height: 30.0),
+                AboutMe(imageWidth: imageWidth, avatarGlowSize: avatarGlowSize, imageSize: imageSize, headingFontSize: headingFontSize, themeController: themeController, baseFontSize: baseFontSize),
+                const SizedBox(height: 50.0),
+                SkillsSection(),
               ],
             )),
       ),

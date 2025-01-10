@@ -7,7 +7,7 @@ import '../../../Controller/theme_controller.dart';
 
 class FiveSection extends StatelessWidget {
   final RotationController rotationController = Get.put(RotationController());
-  final ThemeController themeController = Get.find<ThemeController>();
+  final ThemeController themeController = Get.put(ThemeController());
   FiveSection({super.key});
 
   @override

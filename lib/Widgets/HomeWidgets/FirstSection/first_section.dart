@@ -11,7 +11,7 @@ import '../../custom_button.dart';
 import '../../navigation_bar.dart';
 
 class FirstSection extends StatelessWidget {
-  final ThemeController themeController = Get.find<ThemeController>();
+  final ThemeController themeController = Get.put(ThemeController());
   FirstSection({
     super.key,
   });
@@ -143,7 +143,8 @@ class FirstSection extends StatelessWidget {
                           ),
                           Expanded(
                             flex: 0,
-                            child: Stack(
+                            child: 
+                            Stack(
                               alignment: Alignment.center,
                               children: [
                                 AvatarGlow(

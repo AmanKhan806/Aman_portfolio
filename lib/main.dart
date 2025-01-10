@@ -1,14 +1,9 @@
-import 'package:amanportfolio/Controller/All_Section_Controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'Controller/theme_controller.dart';
 import 'screens/Home_Screen.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  Get.put(ThemeController());
-  Get.put(AllSectionController());
   await Supabase.initialize(
     url: 'https://lsvafppcyrukxjuddhhb.supabase.co',
     anonKey:

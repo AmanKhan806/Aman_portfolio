@@ -8,8 +8,8 @@ import '../../Animated_Gradienttext.dart';
 import '../../custom_button.dart';
 
 class FourthSection extends StatelessWidget {
-  final AllSectionController controller = Get.find<AllSectionController>();
-  final ThemeController themeController = Get.find<ThemeController>();
+  final AllSectionController controller = Get.put(AllSectionController());
+  final ThemeController themeController = Get.put(ThemeController());
 
   FourthSection({super.key});
 

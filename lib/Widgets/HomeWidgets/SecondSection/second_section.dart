@@ -10,7 +10,7 @@ class SecondSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeController themeController = Get.find<ThemeController>();
+    final ThemeController themeController = Get.put(ThemeController());
     double screenWidth = MediaQuery.of(context).size.width;
     double baseFontSize = screenWidth > 800 ? 20 : 16;
     double headingFontSize = screenWidth > 800 ? 38 : 28;
@@ -23,7 +23,8 @@ class SecondSection extends StatelessWidget {
           horizontal: screenWidth > 800 ? 40.0 : 20.0,
           vertical: screenWidth > 800 ? 40.0 : 20.0,
         ),
-        child: Column(
+        child: 
+        Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Row(

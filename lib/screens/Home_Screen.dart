@@ -12,7 +12,7 @@ import '../Widgets/HomeWidgets/SecondSection/second_section.dart';
 import '../Widgets/HomeWidgets/ThirdSection/third_section.dart';
 
 class HomeScreen extends StatelessWidget {
-  final ThemeController themeController = Get.find<ThemeController>();
+  final ThemeController themeController = Get.put(ThemeController());
   final ScrollController _scrollController = ScrollController();
 
   HomeScreen({super.key});

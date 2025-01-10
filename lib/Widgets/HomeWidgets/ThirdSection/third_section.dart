@@ -10,8 +10,8 @@ import '../../../Controller/theme_controller.dart';
 import '../../custom_button.dart';
 
 class ThirdSection extends StatelessWidget {
-  final AllSectionController controller = Get.find<AllSectionController>();
-  final ThemeController themeController = Get.find<ThemeController>();
+  final AllSectionController controller = Get.put(AllSectionController());
+  final ThemeController themeController = Get.put(ThemeController());
   ThirdSection({super.key});
 
   @override
