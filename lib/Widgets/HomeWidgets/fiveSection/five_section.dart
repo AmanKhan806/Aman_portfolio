@@ -7,7 +7,8 @@ import '../../../Controller/theme_controller.dart';
 
 class FiveSection extends StatelessWidget {
   final RotationController rotationController = Get.put(RotationController());
-  final ThemeController themeController = Get.put(ThemeController());
+  final ThemeController themeController = Get.find();
+
   FiveSection({super.key});
 
   @override
@@ -164,10 +165,10 @@ class FiveSection extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(
                     vertical: 20.0, horizontal: 20.0),
-                decoration:  const BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(20.0)),
                   color: ColorResources.appMainColor,
-                  ),
+                ),
                 child: Text(
                   '© 2025 Aman Khan. All Rights Reserved.',
                   style: GoogleFonts.ubuntu(

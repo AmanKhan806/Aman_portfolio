@@ -8,14 +8,14 @@ import '../../Animated_Gradienttext.dart';
 import '../../custom_button.dart';
 
 class FourthSection extends StatelessWidget {
-  final AllSectionController controller = Get.put(AllSectionController());
-  final ThemeController themeController = Get.put(ThemeController());
+  final AllSectionController controller = Get.find();
+  final ThemeController themeController = Get.find();
 
   FourthSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    controller.fetchFourthSectionData();
+    // controller.fetchFourthSectionData();
     return Obx(() {
       if (controller.isLoading.value) {
         return const Center(

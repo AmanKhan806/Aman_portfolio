@@ -8,6 +8,20 @@ class AllSectionController extends GetxController {
   var skillsSectionData = <Map<String, dynamic>>[].obs;
   var isLoading = false.obs;
 
+  @override
+  void onInit() {
+    super.onInit();
+    fetchAllData();
+  }
+
+  Future<void> fetchAllData() async {
+    await Future.wait([
+      fetchThirdSectionData(),
+      fetchFourthSectionData(),
+      fetchSkillsData(),
+    ]);
+  }
+
   Future<void> fetchThirdSectionData() async {
     isLoading.value = true;
     try {
@@ -17,6 +31,7 @@ class AllSectionController extends GetxController {
         throw Exception('No data found');
       }
       thirdSectionData.value = List<Map<String, dynamic>>.from(response);
+      log("Formatted third Section data: ${thirdSectionData.value}");
     } catch (e) {
       log("Error fetching data: $e");
       Get.snackbar("Error", e.toString());
@@ -31,9 +46,10 @@ class AllSectionController extends GetxController {
       final response =
           await Supabase.instance.client.from('fourth_section_data').select();
       if (response.isEmpty) {
-        throw Exception('No datajdjdisfi9sdound');
+        throw Exception('No data found');
       }
       fourthSectionData.value = List<Map<String, dynamic>>.from(response);
+      log("Formatted fourth Section data: ${fourthSectionData.value}");
     } catch (e) {
       log("Error fetching data: $e");
       Get.snackbar("Error", e.toString());
@@ -47,7 +63,6 @@ class AllSectionController extends GetxController {
     try {
       final response =
           await Supabase.instance.client.from('skills_section').select();
-      log("Supabase response: $response");
       if (response.isEmpty) {
         log("No data found in skills section");
         throw Exception('No data found in skills section');

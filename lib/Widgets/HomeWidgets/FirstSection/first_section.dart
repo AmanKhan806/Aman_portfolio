@@ -11,7 +11,7 @@ import '../../custom_button.dart';
 import '../../navigation_bar.dart';
 
 class FirstSection extends StatelessWidget {
-  final ThemeController themeController = Get.put(ThemeController());
+final ThemeController themeController = Get.find();
   FirstSection({
     super.key,
   });

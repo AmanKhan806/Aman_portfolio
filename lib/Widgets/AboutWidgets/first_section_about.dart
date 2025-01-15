@@ -9,15 +9,16 @@ import 'AboutMe/about_me_section.dart';
 import 'Skills/skills_section.dart';
 
 class FirstSectionAbout extends StatelessWidget {
-  final ThemeController themeController = Get.put(ThemeController());
-  final AllSectionController controller = Get.put(AllSectionController());
+  final ThemeController themeController = Get.find();
+  final AllSectionController controller = Get.find();
+
   FirstSectionAbout({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    controller.fetchSkillsData();
+    // controller.fetchSkillsData();
     double screenWidth = MediaQuery.of(context).size.width;
     double imageWidth = screenWidth > 800 ? 280 : 180;
     double avatarGlowSize = screenWidth > 800 ? 350 : 250;
@@ -41,7 +42,13 @@ class FirstSectionAbout extends StatelessWidget {
                       fontSize: 100,
                     )),
                 const SizedBox(height: 30.0),
-                AboutMe(imageWidth: imageWidth, avatarGlowSize: avatarGlowSize, imageSize: imageSize, headingFontSize: headingFontSize, themeController: themeController, baseFontSize: baseFontSize),
+                AboutMe(
+                    imageWidth: imageWidth,
+                    avatarGlowSize: avatarGlowSize,
+                    imageSize: imageSize,
+                    headingFontSize: headingFontSize,
+                    themeController: themeController,
+                    baseFontSize: baseFontSize),
                 const SizedBox(height: 50.0),
                 SkillsSection(),
               ],

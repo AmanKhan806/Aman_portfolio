@@ -19,9 +19,8 @@ class SkillsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    controller.fetchSkillsData();
+    // controller.fetchSkillsData();
     return Obx(() {
-      log("Skills Data: ${controller.skillsSectionData}");
       if (controller.isLoading.value) {
         return const Center(
           child: CircularProgressIndicator(color: ColorResources.blackColor),

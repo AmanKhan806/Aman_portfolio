@@ -10,13 +10,14 @@ import '../../../Controller/theme_controller.dart';
 import '../../custom_button.dart';
 
 class ThirdSection extends StatelessWidget {
-  final AllSectionController controller = Get.put(AllSectionController());
-  final ThemeController themeController = Get.put(ThemeController());
+ final AllSectionController controller = Get.find();
+final ThemeController themeController = Get.find();
+
   ThirdSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    controller.fetchThirdSectionData();
+    // controller.fetchThirdSectionData();
     return Obx(() {
       if (controller.isLoading.value) {
         return const Center(
