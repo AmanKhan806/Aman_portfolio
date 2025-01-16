@@ -1,3 +1,4 @@
+import 'package:amanportfolio/Widgets/AboutWidgets/FollowMeSection/followme_section.dart';
 import 'package:amanportfolio/Widgets/Animated_Gradienttext.dart';
 import 'package:amanportfolio/Widgets/navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
@@ -20,6 +21,7 @@ class FirstSectionAbout extends StatelessWidget {
   Widget build(BuildContext context) {
     // controller.fetchSkillsData();
     double screenWidth = MediaQuery.of(context).size.width;
+    final isMobile = screenWidth < 600;
     double imageWidth = screenWidth > 800 ? 280 : 180;
     double avatarGlowSize = screenWidth > 800 ? 350 : 250;
     double baseFontSize = screenWidth > 800 ? 20 : 16;
@@ -33,14 +35,23 @@ class FirstSectionAbout extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(height: 20),
-                CustomNavigationBar(),
+                !isMobile ? 
+                CustomNavigationBar() : const CustomNavigationBarforMobile(),
                 const SizedBox(height: 30),
-                const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30.0),
-                    child: AnimatedGradientText(
-                      text: "Learn More About Me",
-                      fontSize: 100,
-                    )),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                  child: !isMobile
+                      ? const AnimatedGradientText(
+                          text: "Learn More About Me",
+                          fontSize: 100,
+                        )
+                      : const Center(
+                        child: AnimatedGradientText(
+                            text: "Learn More About Me",
+                            fontSize: 25,
+                          ),
+                      ),
+                ),
                 const SizedBox(height: 30.0),
                 AboutMe(
                     imageWidth: imageWidth,
@@ -51,6 +62,7 @@ class FirstSectionAbout extends StatelessWidget {
                     baseFontSize: baseFontSize),
                 const SizedBox(height: 50.0),
                 SkillsSection(),
+                FollowmeSection(),
               ],
             )),
       ),

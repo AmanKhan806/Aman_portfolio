@@ -1,25 +1,20 @@
-import 'dart:developer';
-
 import 'package:amanportfolio/Controller/theme_controller.dart';
 import 'package:amanportfolio/utils/Colors/custom_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-
 import '../../../Controller/All_Section_Controller.dart';
 
 class SkillsSection extends StatelessWidget {
-  final ThemeController themeController = Get.put(ThemeController());
-  final AllSectionController controller = Get.put(AllSectionController());
+  final ThemeController themeController = Get.find();
+  final AllSectionController controller = Get.find();
   final ScrollController _scrollController = ScrollController();
 
   SkillsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // controller.fetchSkillsData();
     return Obx(() {
       if (controller.isLoading.value) {
         return const Center(
@@ -115,7 +110,7 @@ class SkillItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Row(
         children: [
-          SvgPicture.network(
+          Image.network(
             imagePath,
             height: 50,
             width: 50,

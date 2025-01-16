@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 class ThemeController extends GetxController {
-  var isDarkMode = false.obs;
+  var isDarkMode = true.obs;
 
   void toggleTheme() {
     isDarkMode.value = !isDarkMode.value;
@@ -15,12 +15,12 @@ class ThemeController extends GetxController {
       ? ColorResources.containerBlackColor
       : ColorResources.backgroundColor1;
 
-  Color get glassEffectColor => isDarkMode.value
-      ? Colors.grey.shade800
-      : Colors.white70;
+  Color get glassEffectColor =>
+      isDarkMode.value ? Colors.grey.shade800 : Colors.white70;
 
   Color get logotextColor =>
       isDarkMode.value ? ColorResources.blackColor : ColorResources.whiteColor;
+
 }
 
 class ThirdPageController extends GetxController {

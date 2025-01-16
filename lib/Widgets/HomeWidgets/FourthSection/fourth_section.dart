@@ -172,6 +172,7 @@ class ProjectCard extends StatelessWidget {
     final ThemeController themeController = Get.find<ThemeController>();
     return Card(
       color: themeController.glassEffectColor,
+      surfaceTintColor: themeController.glassEffectColor,
       elevation: 3,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),

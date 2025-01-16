@@ -45,6 +45,7 @@ dependencies:
   supabase_flutter: ^2.0.0
   confetti: ^0.8.0
   percent_indicator: ^4.2.4
+  persistent_bottom_nav_bar: ^6.2.1
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +72,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
+    - assets/socialIcons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

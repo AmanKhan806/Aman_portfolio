@@ -5,18 +5,13 @@ import 'package:amanportfolio/utils/Colors/custom_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import '../Controller/All_Section_Controller.dart';
 import '../Controller/theme_controller.dart';
-import '../Widgets/AboutWidgets/Skills/skills_section.dart';
 import '../Widgets/AboutWidgets/first_section_about.dart';
 
 class AboutScreen extends StatelessWidget {
   final ThemeController themeController = Get.find();
-
   final ScrollController _scrollController = ScrollController();
-
   AboutScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(

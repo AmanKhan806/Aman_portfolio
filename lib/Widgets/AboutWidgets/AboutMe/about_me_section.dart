@@ -49,9 +49,10 @@ class AboutMe extends StatelessWidget {
                 shadowColor: ColorResources.greyOneColor,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: ClipOval(
+                  child: ClipPath(
+                    clipper: const ShapeBorderClipper(shape: CircleBorder()),
                     child: Image.asset(
-                      "assets/picture1.png",
+                      "assets/pic2.jpeg",
                       fit: BoxFit.cover,
                       width: imageWidth,
                     ),
