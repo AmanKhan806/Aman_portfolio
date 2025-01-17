@@ -19,7 +19,6 @@ class FirstSectionAbout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // controller.fetchSkillsData();
     double screenWidth = MediaQuery.of(context).size.width;
     final isMobile = screenWidth < 600;
     double imageWidth = screenWidth > 800 ? 280 : 180;

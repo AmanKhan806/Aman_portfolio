@@ -1,3 +1,4 @@
+import 'package:amanportfolio/screens/view_project_detail_page.dart';
 import 'package:amanportfolio/utils/Colors/custom_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -128,7 +129,13 @@ class FourthSection extends StatelessWidget {
                           .map((tag) => tag.toString())
                           .toList()
                       : [],
-                  onViewProject: () {},
+                  onViewProject: () {
+                    Get.to(ViewProjectDetailPage(
+                      bannerImage: data['banner_url'],
+                      appLogoImage: data['logo_url'],
+                      appTextName: data['name'],
+                    ));
+                  },
                   companyUrl: data['organization'],
                 );
               },
@@ -248,7 +255,7 @@ class ProjectCard extends StatelessWidget {
                 child: CustomButton(
                   isbuttonShow: false,
                   buttonText: 'View Project',
-                  onPressed: () {},
+                  onPressed: onViewProject,
                 ))
           ],
         ),
