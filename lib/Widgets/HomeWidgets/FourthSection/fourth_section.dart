@@ -120,6 +120,8 @@ class FourthSection extends StatelessWidget {
               itemCount: 6,
               itemBuilder: (context, index) {
                 var data = controller.fourthSectionData[index];
+                List<String> carouselImages =
+                    List<String>.from(data['carousel_images'] ?? []);
                 return ProjectCard(
                   imageUrl: data['logo_url'],
                   title: data['name'],
@@ -134,6 +136,7 @@ class FourthSection extends StatelessWidget {
                       bannerImage: data['banner_url'],
                       appLogoImage: data['logo_url'],
                       appTextName: data['name'],
+                      carouselImages: carouselImages, appDesc: data['description'],
                     ));
                   },
                   companyUrl: data['organization'],

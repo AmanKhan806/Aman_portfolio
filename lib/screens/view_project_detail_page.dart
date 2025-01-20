@@ -12,10 +12,12 @@ class ViewProjectDetailPage extends StatelessWidget {
   final String bannerImage;
   final String appLogoImage;
   final String appTextName;
+  final List<String> carouselImages;
+  final String appDesc;
   final ThemeController themeController = Get.put(ThemeController());
   final ScrollController _scrollController = ScrollController();
 
-  ViewProjectDetailPage({super.key, required this.bannerImage, required this.appLogoImage, required this.appTextName});
+  ViewProjectDetailPage({super.key, required this.bannerImage, required this.appLogoImage, required this.appTextName, required this.carouselImages, required this.appDesc});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,7 @@ class ViewProjectDetailPage extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
-                  DetailPage(bannerImage: bannerImage, appLogoImage: appLogoImage, appTextName: appTextName,),
+                  DetailPage(bannerImage: bannerImage, appLogoImage: appLogoImage, appTextName: appTextName, carouselImages: carouselImages, appDesc: appDesc,),
                   FiveSection(),
                 ],
               ),
