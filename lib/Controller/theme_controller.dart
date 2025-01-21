@@ -20,7 +20,6 @@ class ThemeController extends GetxController {
 
   Color get logotextColor =>
       isDarkMode.value ? ColorResources.blackColor : ColorResources.whiteColor;
-
 }
 
 class ThirdPageController extends GetxController {

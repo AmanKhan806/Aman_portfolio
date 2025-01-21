@@ -1,6 +1,5 @@
+import 'package:amanportfolio/Controller/Navigation_controller.dart';
 import 'package:amanportfolio/utils/Colors/custom_colors.dart';
-// ignore: unnecessary_import
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,14 +9,14 @@ import '../../../Controller/theme_controller.dart';
 import '../../custom_button.dart';
 
 class ThirdSection extends StatelessWidget {
- final AllSectionController controller = Get.find();
-final ThemeController themeController = Get.find();
-
+  final AllSectionController controller = Get.find();
+  final ThemeController themeController = Get.find();
+  final NavigationController navigationController =
+      Get.put(NavigationController());
   ThirdSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // controller.fetchThirdSectionData();
     return Obx(() {
       if (controller.isLoading.value) {
         return const Center(
@@ -109,7 +108,9 @@ final ThemeController themeController = Get.find();
             CustomButton(
               buttonText: 'View More',
               isbuttonShow: false,
-              onPressed: () {},
+              onPressed: () {
+                navigationController.updateActiveTabAndNavigate('About');
+              },
             ),
           ],
         ),

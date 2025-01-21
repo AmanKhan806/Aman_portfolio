@@ -13,11 +13,24 @@ class ViewProjectDetailPage extends StatelessWidget {
   final String appLogoImage;
   final String appTextName;
   final List<String> carouselImages;
+  final List<String> tags;
   final String appDesc;
+    final String playStoreLink;
+  final String appStoreLink;
+  final String buymeaCoffeeLink;
+  final String organizationImage;
   final ThemeController themeController = Get.put(ThemeController());
   final ScrollController _scrollController = ScrollController();
 
-  ViewProjectDetailPage({super.key, required this.bannerImage, required this.appLogoImage, required this.appTextName, required this.carouselImages, required this.appDesc});
+  ViewProjectDetailPage(
+      {super.key,
+      required this.bannerImage,
+      required this.appLogoImage,
+      required this.appTextName,
+      required this.carouselImages,
+      required this.appDesc,
+      required this.organizationImage,
+      required this.tags, required this.playStoreLink, required this.appStoreLink, required this.buymeaCoffeeLink});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +52,18 @@ class ViewProjectDetailPage extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
-                  DetailPage(bannerImage: bannerImage, appLogoImage: appLogoImage, appTextName: appTextName, carouselImages: carouselImages, appDesc: appDesc,),
+                  DetailPage(
+                    bannerImage: bannerImage,
+                    appLogoImage: appLogoImage,
+                    appTextName: appTextName,
+                    carouselImages: carouselImages,
+                    appDesc: appDesc,
+                    organizationImage: organizationImage,
+                    tags: tags,
+                    playStoreLink: playStoreLink,
+                    appStoreLink: appStoreLink,
+                    buymeaCoffeeLink: buymeaCoffeeLink,
+                  ),
                   FiveSection(),
                 ],
               ),

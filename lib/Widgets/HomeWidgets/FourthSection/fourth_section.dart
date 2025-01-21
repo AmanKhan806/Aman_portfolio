@@ -1,9 +1,11 @@
+import 'dart:developer';
 import 'package:amanportfolio/screens/view_project_detail_page.dart';
 import 'package:amanportfolio/utils/Colors/custom_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../Controller/All_Section_Controller.dart';
+import '../../../Controller/Navigation_controller.dart';
 import '../../../Controller/theme_controller.dart';
 import '../../Animated_Gradienttext.dart';
 import '../../custom_button.dart';
@@ -11,12 +13,12 @@ import '../../custom_button.dart';
 class FourthSection extends StatelessWidget {
   final AllSectionController controller = Get.find();
   final ThemeController themeController = Get.find();
-
+  final NavigationController navigationController =
+      Get.put(NavigationController());
   FourthSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // controller.fetchFourthSectionData();
     return Obx(() {
       if (controller.isLoading.value) {
         return const Center(
@@ -120,6 +122,7 @@ class FourthSection extends StatelessWidget {
               itemCount: 6,
               itemBuilder: (context, index) {
                 var data = controller.fourthSectionData[index];
+                log("Data for index $index: $data");
                 List<String> carouselImages =
                     List<String>.from(data['carousel_images'] ?? []);
                 return ProjectCard(
@@ -136,7 +139,17 @@ class FourthSection extends StatelessWidget {
                       bannerImage: data['banner_url'],
                       appLogoImage: data['logo_url'],
                       appTextName: data['name'],
-                      carouselImages: carouselImages, appDesc: data['description'],
+                      carouselImages: carouselImages,
+                      appDesc: data['description'],
+                      organizationImage: data['organization'],
+                      tags: data['technologies'] != null
+                          ? (data['technologies'] as List)
+                              .map((tag) => tag.toString())
+                              .toList()
+                          : [],
+                      playStoreLink: data['play_store_link'] ?? '',
+                      appStoreLink: data['app_store_link'] ?? '',
+                      buymeaCoffeeLink: data['buy_me_a_coffee_link'] ?? '',
                     ));
                   },
                   companyUrl: data['organization'],
@@ -149,7 +162,9 @@ class FourthSection extends StatelessWidget {
               child: CustomButton(
                 buttonText: 'View More',
                 isbuttonShow: false,
-                onPressed: () {},
+                onPressed: () {
+                  navigationController.updateActiveTabAndNavigate('Portfolio');
+                },
               ),
             ),
           ],
@@ -188,7 +203,7 @@ class ProjectCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
       ),
       child: Container(
-        width: 400,
+        // width: 400,
         padding: const EdgeInsets.all(26),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

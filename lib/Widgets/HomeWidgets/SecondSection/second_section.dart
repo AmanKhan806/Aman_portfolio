@@ -2,6 +2,7 @@ import 'package:amanportfolio/utils/Colors/custom_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../Controller/Navigation_controller.dart';
 import '../../../Controller/theme_controller.dart';
 import '../../custom_button.dart';
 
@@ -11,7 +12,8 @@ class SecondSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeController themeController = Get.find();
-
+    final NavigationController navigationController =
+        Get.put(NavigationController());
     double screenWidth = MediaQuery.of(context).size.width;
     double baseFontSize = screenWidth > 800 ? 20 : 16;
     double headingFontSize = screenWidth > 800 ? 38 : 28;
@@ -214,7 +216,9 @@ class SecondSection extends StatelessWidget {
             CustomButton(
               buttonText: 'More Info About me',
               isbuttonShow: false,
-              onPressed: () {},
+              onPressed: () {
+                navigationController.updateActiveTabAndNavigate('About');
+              },
             ),
           ],
         ),
