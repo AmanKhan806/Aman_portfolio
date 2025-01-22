@@ -1,5 +1,5 @@
+import 'package:amanportfolio/Controller/Navigation_controller.dart';
 import 'package:avatar_glow/avatar_glow.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -11,7 +11,9 @@ import '../../custom_button.dart';
 import '../../navigation_bar.dart';
 
 class FirstSection extends StatelessWidget {
-final ThemeController themeController = Get.find();
+  final ThemeController themeController = Get.find();
+  final NavigationController navigationController =
+      Get.put(NavigationController());
   FirstSection({
     super.key,
   });
@@ -103,7 +105,11 @@ final ThemeController themeController = Get.find();
                                 Row(
                                   children: [
                                     ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        navigationController
+                                            .updateActiveTabAndNavigate(
+                                                'Contact');
+                                      },
                                       style: ElevatedButton.styleFrom(
                                         padding: EdgeInsets.symmetric(
                                           horizontal: 40,
@@ -143,8 +149,7 @@ final ThemeController themeController = Get.find();
                           ),
                           Expanded(
                             flex: 0,
-                            child: 
-                            Stack(
+                            child: Stack(
                               alignment: Alignment.center,
                               children: [
                                 AvatarGlow(

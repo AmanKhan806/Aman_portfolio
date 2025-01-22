@@ -1,3 +1,4 @@
+import 'package:amanportfolio/Controller/Navigation_controller.dart';
 import 'package:amanportfolio/utils/Colors/custom_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,7 +9,8 @@ import '../../../Controller/theme_controller.dart';
 class FiveSection extends StatelessWidget {
   final RotationController rotationController = Get.put(RotationController());
   final ThemeController themeController = Get.find();
-
+  final NavigationController navigationController =
+      Get.put(NavigationController());
   FiveSection({super.key});
 
   @override
@@ -92,7 +94,10 @@ class FiveSection extends StatelessWidget {
                   ),
                   const SizedBox(height: 30),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      navigationController
+                                .updateActiveTabAndNavigate('Contact');
+                    },
                     child: RotationTransition(
                       turns: rotationController.animationController,
                       child: Container(
@@ -137,25 +142,60 @@ class FiveSection extends StatelessWidget {
                     spacing: 10.0,
                     alignment: WrapAlignment.center,
                     children: [
-                      FiveSectionWidget(
-                        butonText: 'Home',
-                        onPressed: () {},
+                      Obx(
+                        () => FiveSectionWidget(
+                          butonText: 'Home',
+                          onPressed: () {
+                            navigationController
+                                .updateActiveTabAndNavigate('Home');
+                          },
+                          isActive:
+                              navigationController.activeTab.value == 'Home',
+                        ),
                       ),
-                      FiveSectionWidget(
-                        butonText: 'About',
-                        onPressed: () {},
+                      Obx(
+                        () => FiveSectionWidget(
+                          butonText: 'About',
+                          onPressed: () {
+                            navigationController
+                                .updateActiveTabAndNavigate('About');
+                          },
+                          isActive:
+                              navigationController.activeTab.value == 'About',
+                        ),
                       ),
-                      FiveSectionWidget(
-                        butonText: 'Resume',
-                        onPressed: () {},
+                      Obx(
+                        () => FiveSectionWidget(
+                          butonText: 'Resume',
+                          onPressed: () {
+                            navigationController
+                                .updateActiveTabAndNavigate('Resume');
+                          },
+                          isActive:
+                              navigationController.activeTab.value == 'Resume',
+                        ),
                       ),
-                      FiveSectionWidget(
-                        butonText: 'Portfolio',
-                        onPressed: () {},
+                      Obx(
+                        () => FiveSectionWidget(
+                          butonText: 'Portfolio',
+                          onPressed: () {
+                            navigationController
+                                .updateActiveTabAndNavigate('Portfolio');
+                          },
+                          isActive: navigationController.activeTab.value ==
+                              'Portfolio',
+                        ),
                       ),
-                      FiveSectionWidget(
-                        butonText: 'Contact',
-                        onPressed: () {},
+                      Obx(
+                        () => FiveSectionWidget(
+                          butonText: 'Contact',
+                          onPressed: () {
+                            navigationController
+                                .updateActiveTabAndNavigate('Contact');
+                          },
+                          isActive:
+                              navigationController.activeTab.value == 'Contact',
+                        ),
                       ),
                     ],
                   ),
@@ -189,10 +229,12 @@ class FiveSection extends StatelessWidget {
 class FiveSectionWidget extends StatelessWidget {
   final String butonText;
   final VoidCallback onPressed;
+  final bool isActive;
   const FiveSectionWidget({
     super.key,
     required this.butonText,
     required this.onPressed,
+    this.isActive = false,
   });
 
   @override
@@ -206,7 +248,10 @@ class FiveSectionWidget extends StatelessWidget {
       child: Text(
         butonText,
         style: GoogleFonts.ubuntu(
-          color: themeController.textColor,
+          color: isActive
+              ? ColorResources.appMainColor
+              : themeController.textColor,
+          fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
           fontSize: isMobile ? 14.0 : 16.0,
         ),
       ),

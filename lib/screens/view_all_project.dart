@@ -13,7 +13,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Controller/theme_controller.dart';
 import '../Widgets/HomeWidgets/fiveSection/five_section.dart';
-import '../Widgets/ViewProjectDetailPage/detail_page.dart';
 
 class ViewAllProject extends StatelessWidget {
   final ThemeController themeController = Get.put(ThemeController());
