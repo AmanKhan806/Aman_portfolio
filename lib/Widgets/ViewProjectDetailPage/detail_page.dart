@@ -1,3 +1,4 @@
+import 'package:amanportfolio/Controller/url_launcher_function.dart';
 import 'package:amanportfolio/Widgets/Animated_Gradienttext.dart';
 import 'package:amanportfolio/Widgets/navigation_bar.dart';
 import 'package:carousel_slider/carousel_options.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../Controller/theme_controller.dart';
 import '../../Controller/All_Section_Controller.dart';
 
@@ -221,12 +223,17 @@ class DetailPage extends StatelessWidget {
                       children: [
                         if (playStoreLink != null && playStoreLink.isNotEmpty)
                           Obx(
-                            () => SvgPicture.asset(
-                              themeController.isDarkMode.value
-                                  ? 'assets/playstorelight.svg'
-                                  : 'assets/playstoredark.svg',
-                              height: 80,
-                              width: 80,
+                            () => GestureDetector(
+                              onTap: (){
+                                  mylaunchURL(playStoreLink);
+                              },
+                              child: SvgPicture.asset(
+                                themeController.isDarkMode.value
+                                    ? 'assets/playstorelight.svg'
+                                    : 'assets/playstoredark.svg',
+                                height: 80,
+                                width: 80,
+                              ),
                             ),
                           ),
                         const SizedBox(
@@ -234,12 +241,17 @@ class DetailPage extends StatelessWidget {
                         ),
                         if (appStoreLink != null && appStoreLink.isNotEmpty)
                           Obx(
-                            () => SvgPicture.asset(
-                              themeController.isDarkMode.value
-                                  ? 'assets/appstorelight.svg'
-                                  : 'assets/appstoredark.svg',
-                              height: 80,
-                              width: 80,
+                            () => GestureDetector(
+                              onTap: (){
+                                mylaunchURL(appStoreLink);
+                              },
+                              child: SvgPicture.asset(
+                                themeController.isDarkMode.value
+                                    ? 'assets/appstorelight.svg'
+                                    : 'assets/appstoredark.svg',
+                                height: 80,
+                                width: 80,
+                              ),
                             ),
                           ),
                         const SizedBox(
@@ -247,22 +259,32 @@ class DetailPage extends StatelessWidget {
                         ),
                         if (buymeaCoffeeLink != null &&
                             buymeaCoffeeLink.isNotEmpty)
-                          SvgPicture.asset(
-                            'assets/buymeacoffee.svg',
-                            height: 70,
-                            width: 70,
+                          GestureDetector(
+                            onTap: (){
+                              mylaunchURL(buymeaCoffeeLink);
+                            },
+                            child: SvgPicture.asset(
+                              'assets/buymeacoffee.svg',
+                              height: 70,
+                              width: 70,
+                            ),
                           ),
                       ],
                     ) : Row(
                       children: [
                         if (playStoreLink != null && playStoreLink.isNotEmpty)
                           Obx(
-                            () => SvgPicture.asset(
-                              themeController.isDarkMode.value
-                                  ? 'assets/playstorelight.svg'
-                                  : 'assets/playstoredark.svg',
-                              height: 80,
-                              width: 80,
+                            () => GestureDetector(
+                              onTap: (){
+                                mylaunchURL(playStoreLink);
+                              },
+                              child: SvgPicture.asset(
+                                themeController.isDarkMode.value
+                                    ? 'assets/playstorelight.svg'
+                                    : 'assets/playstoredark.svg',
+                                height: 80,
+                                width: 80,
+                              ),
                             ),
                           ),
                         const SizedBox(
@@ -270,12 +292,17 @@ class DetailPage extends StatelessWidget {
                         ),
                         if (appStoreLink != null && appStoreLink.isNotEmpty)
                           Obx(
-                            () => SvgPicture.asset(
-                              themeController.isDarkMode.value
-                                  ? 'assets/appstorelight.svg'
-                                  : 'assets/appstoredark.svg',
-                              height: 80,
-                              width: 80,
+                            () => GestureDetector(
+                              onTap: (){
+                                mylaunchURL(appStoreLink);
+                              },
+                              child: SvgPicture.asset(
+                                themeController.isDarkMode.value
+                                    ? 'assets/appstorelight.svg'
+                                    : 'assets/appstoredark.svg',
+                                height: 80,
+                                width: 80,
+                              ),
                             ),
                           ),
                         const SizedBox(
@@ -283,10 +310,15 @@ class DetailPage extends StatelessWidget {
                         ),
                         if (buymeaCoffeeLink != null &&
                             buymeaCoffeeLink.isNotEmpty)
-                          SvgPicture.asset(
-                            'assets/buymeacoffee.svg',
-                            height: 80,
-                            width: 80,
+                          GestureDetector(
+                            onTap: (){
+                              mylaunchURL(buymeaCoffeeLink);
+                            },
+                            child: SvgPicture.asset(
+                              'assets/buymeacoffee.svg',
+                              height: 80,
+                              width: 80,
+                            ),
                           ),
                       ],
                     ),

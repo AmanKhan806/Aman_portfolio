@@ -1,3 +1,4 @@
+import 'package:amanportfolio/screens/resume_screen.dart';
 import 'package:get/get.dart';
 
 import '../../screens/Home_Screen.dart';
@@ -10,6 +11,7 @@ class AppPages {
   static const about = '/about';
   static const portfolio = '/portfolio';
   static const contact = '/contact';
+  static const resume = '/resume';
 
   static List<GetPage> pages = [
     GetPage(
@@ -20,6 +22,11 @@ class AppPages {
     GetPage(
       name: about,
       page: () => AboutScreen(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: resume,
+      page: () => const ResumeScreen(),
       transition: Transition.fadeIn,
     ),
     GetPage(

@@ -13,6 +13,9 @@ class NavigationController extends GetxController {
       case 'About':
         Get.toNamed(AppPages.about);
         break;
+      case 'Resume':
+        Get.toNamed(AppPages.resume);
+        break;
       case 'Portfolio':
         Get.toNamed(AppPages.portfolio);
         break;

@@ -6,9 +6,11 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../Controller/theme_controller.dart';
+import '../../../Controller/url_launcher_function.dart';
 import '../../../utils/Colors/custom_colors.dart';
 import '../../custom_button.dart';
 import '../../navigation_bar.dart';
+import '../../url_text.dart';
 
 class FirstSection extends StatelessWidget {
   final ThemeController themeController = Get.find();
@@ -229,7 +231,9 @@ class FirstSection extends StatelessWidget {
                                           height: 35,
                                           width: 35,
                                         ),
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          mylaunchURL(linkedinUrl);
+                                        },
                                       ),
                                       IconButton(
                                         icon: SvgPicture.asset(
@@ -237,7 +241,9 @@ class FirstSection extends StatelessWidget {
                                           height: 45,
                                           width: 45,
                                         ),
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          mylaunchURL(instagramUrl);
+                                        },
                                       ),
                                     ],
                                   ),
