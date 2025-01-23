@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../Controller/Animated_Controller.dart';
 import '../utils/Colors/custom_colors.dart';
 
@@ -18,7 +17,7 @@ class AnimatedGradientText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AnimatedGradientController gradientController =
-        Get.put(AnimatedGradientController());
+        Get.put(AnimatedGradientController());  
 
     return AnimatedBuilder(
       animation: gradientController.animationController,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'Controller/Initail_binding_controller.dart';
-import 'screens/Home_Screen.dart';
+import 'utils/routes/App_pages_routes.dart';
 
 Future<void> main() async {
   await Supabase.initialize(
@@ -21,7 +21,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       initialBinding: InitialBindings(),
-      home: HomeScreen(),
+      getPages: AppPages.pages,
+      initialRoute: AppPages.home, 
     );
   }
 }

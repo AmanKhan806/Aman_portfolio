@@ -46,128 +46,130 @@ class FourthSection extends StatelessWidget {
               : 3;
       return Container(
         color: themeController.containerColor,
-        padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 50.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: RichText(
-                    textAlign: TextAlign.start,
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: "Here's a Glimpse of \n",
-                          style: GoogleFonts.ubuntu(
-                            color: themeController.textColor,
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
+        child: Padding(
+          padding: const EdgeInsets.all(18.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: RichText(
+                      textAlign: TextAlign.start,
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "Here's a Glimpse of \n",
+                            style: GoogleFonts.ubuntu(
+                              color: themeController.textColor,
+                              fontSize: 40,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        TextSpan(
-                          text: "Some Exciting Projects\n",
-                          style: GoogleFonts.ubuntu(
-                            color: themeController.textColor,
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
+                          TextSpan(
+                            text: "Some Exciting Projects\n",
+                            style: GoogleFonts.ubuntu(
+                              color: themeController.textColor,
+                              fontSize: 40,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        TextSpan(
-                          text: "I've Done",
-                          style: GoogleFonts.ubuntu(
-                            color: themeController.textColor,
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
+                          TextSpan(
+                            text: "I've Done",
+                            style: GoogleFonts.ubuntu(
+                              color: themeController.textColor,
+                              fontSize: 40,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                if (!isMobile)
-                  Image.asset(
-                    'assets/LaptopUser.png',
-                    cacheHeight: 70,
-                    cacheWidth: 70,
-                    fit: BoxFit.cover,
-                  ),
-              ],
-            ),
-            const SizedBox(height: 20.0),
-            Align(
-              alignment: Alignment.center,
-              child: !isMobile
-                  ? const AnimatedGradientText(
-                      text: "Flutter",
-                      fontSize: 200,
-                    )
-                  : const AnimatedGradientText(
-                      text: "Flutter",
-                      fontSize: 100,
+                  if (!isMobile)
+                    Image.asset(
+                      'assets/LaptopUser.png',
+                      cacheHeight: 70,
+                      cacheWidth: 70,
+                      fit: BoxFit.cover,
                     ),
-            ),
-            const SizedBox(height: 20.0),
-            GridView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: crossAxisCount,
-                mainAxisSpacing: 10.0,
-                crossAxisSpacing: 10.0,
-                childAspectRatio: isMobile ? 0.7 : 0.8,
+                ],
               ),
-              itemCount: 6,
-              itemBuilder: (context, index) {
-                var data = controller.fourthSectionData[index];
-                log("Data for index $index: $data");
-                List<String> carouselImages =
-                    List<String>.from(data['carousel_images'] ?? []);
-                return ProjectCard(
-                  imageUrl: data['logo_url'],
-                  title: data['name'],
-                  description: data['description'],
-                  tags: data['technologies'] != null
-                      ? (data['technologies'] as List)
-                          .map((tag) => tag.toString())
-                          .toList()
-                      : [],
-                  onViewProject: () {
-                    Get.to(ViewProjectDetailPage(
-                      bannerImage: data['banner_url'],
-                      appLogoImage: data['logo_url'],
-                      appTextName: data['name'],
-                      carouselImages: carouselImages,
-                      appDesc: data['description'],
-                      organizationImage: data['organization'],
-                      tags: data['technologies'] != null
-                          ? (data['technologies'] as List)
-                              .map((tag) => tag.toString())
-                              .toList()
-                          : [],
-                      playStoreLink: data['play_store_link'] ?? '',
-                      appStoreLink: data['app_store_link'] ?? '',
-                      buymeaCoffeeLink: data['buy_me_a_coffee_link'] ?? '',
-                    ));
-                  },
-                  companyUrl: data['organization'],
-                );
-              },
-            ),
-            const SizedBox(height: 20.0),
-            Align(
-              alignment: Alignment.center,
-              child: CustomButton(
-                buttonText: 'View More',
-                isbuttonShow: false,
-                onPressed: () {
-                  navigationController.updateActiveTabAndNavigate('Portfolio');
+              const SizedBox(height: 20.0),
+              Align(
+                alignment: Alignment.center,
+                child: !isMobile
+                    ? const AnimatedGradientText(
+                        text: "Flutter",
+                        fontSize: 200,
+                      )
+                    : const AnimatedGradientText(
+                        text: "Flutter",
+                        fontSize: 60,
+                      ),
+              ),
+              const SizedBox(height: 20.0),
+              GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: crossAxisCount,
+                  mainAxisSpacing: 10.0,
+                  crossAxisSpacing: 10.0,
+                  childAspectRatio: isMobile ? 0.5 : (isTablet ? 0.4 : 0.6),
+                ),
+                itemCount: 6,
+                itemBuilder: (context, index) {
+                  var data = controller.fourthSectionData[index];
+                  log("Data for index $index: $data");
+                  List<String> carouselImages =
+                      List<String>.from(data['carousel_images'] ?? []);
+                  return ProjectCard(
+                    imageUrl: data['logo_url'],
+                    title: data['name'],
+                    description: data['description'],
+                    tags: data['technologies'] != null
+                        ? (data['technologies'] as List)
+                            .map((tag) => tag.toString())
+                            .toList()
+                        : [],
+                    onViewProject: () {
+                      Get.to(ViewProjectDetailPage(
+                        bannerImage: data['banner_url'],
+                        appLogoImage: data['logo_url'],
+                        appTextName: data['name'],
+                        carouselImages: carouselImages,
+                        appDesc: data['description'],
+                        organizationImage: data['organization'],
+                        tags: data['technologies'] != null
+                            ? (data['technologies'] as List)
+                                .map((tag) => tag.toString())
+                                .toList()
+                            : [],
+                        playStoreLink: data['play_store_link'] ?? '',
+                        appStoreLink: data['app_store_link'] ?? '',
+                        buymeaCoffeeLink: data['buy_me_a_coffee_link'] ?? '',
+                      ));
+                    },
+                    companyUrl: data['organization'],
+                  );
                 },
               ),
-            ),
-          ],
+              const SizedBox(height: 20.0),
+              Align(
+                alignment: Alignment.center,
+                child: CustomButton(
+                  buttonText: 'View More',
+                  isbuttonShow: false,
+                  onPressed: () {
+                    navigationController.updateActiveTabAndNavigate('Portfolio');
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       );
     });

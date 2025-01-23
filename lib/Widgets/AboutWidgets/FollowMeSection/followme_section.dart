@@ -26,7 +26,7 @@ class FollowmeSection extends StatelessWidget {
               ),
         const SizedBox(height: 50.0),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             SocialMediaButtons(
                 socialIcon: "assets/socialIcons/instagram.png",
@@ -42,7 +42,7 @@ class FollowmeSection extends StatelessWidget {
           height: 50.0,
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             SocialMediaButtons(
                 socialIcon: "assets/socialIcons/twitter.png", onpressed: () {}),
@@ -59,8 +59,8 @@ class FollowmeSection extends StatelessWidget {
                 child: Center(
                   child: Image.asset(
                     "assets/socialIcons/buymeacoffe.png",
-                    width: 70,
-                    height: 70,
+                    width: 65,
+                    height: 65,
                   ),
                 ),
               ),

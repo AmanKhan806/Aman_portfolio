@@ -11,9 +11,7 @@ import '../utils/Colors/custom_colors.dart';
 
 class CustomNavigationBar extends StatelessWidget {
   final ConfettiController confettiController = Get.put(ConfettiController());
-  final NavigationController navigationController =
-      Get.put(NavigationController());
-
+  final NavigationController navigationController = Get.find();
   CustomNavigationBar({super.key});
 
   @override
@@ -120,8 +118,8 @@ class CustomNavigationBarforMobile extends StatelessWidget {
 }
 
 class MobileNavigationDrawer extends StatelessWidget {
-  final NavigationController navigationController =
-      Get.put(NavigationController());
+  final NavigationController navigationController = Get.find();
+
   MobileNavigationDrawer({super.key});
 
   @override
@@ -169,8 +167,8 @@ Widget _buildIconNavItem() {
 }
 
 Widget _buildNavItem(String title, {bool isActive = false}) {
-  final NavigationController navigationController =
-      Get.find<NavigationController>();
+  final NavigationController navigationController = Get.find();
+
   return GestureDetector(
     onTap: () {
       navigationController.updateActiveTabAndNavigate(title);
@@ -194,7 +192,8 @@ Widget _buildNavItem(String title, {bool isActive = false}) {
 
 Widget buildSwitchButton() {
   final ConfettiController confettiController = Get.put(ConfettiController());
-  final ThemeController themeController = Get.put(ThemeController());
+  final ThemeController themeController = Get.find();
+ 
 
   return Obx(() {
     return Switch(

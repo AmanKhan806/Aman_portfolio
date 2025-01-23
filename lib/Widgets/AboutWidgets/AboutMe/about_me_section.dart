@@ -42,8 +42,7 @@ class AboutMe extends StatelessWidget {
               repeat: true,
               child: Material(
                 elevation: 12.0,
-                surfaceTintColor:
-                    ColorResources.appMainColor.withOpacity(0.5),
+                surfaceTintColor: ColorResources.appMainColor.withOpacity(0.5),
                 color: const Color.fromARGB(0, 255, 0, 0),
                 shape: const CircleBorder(),
                 shadowColor: ColorResources.greyOneColor,
@@ -88,42 +87,49 @@ class AboutMe extends StatelessWidget {
               height: imageSize,
               width: imageSize,
             ),
-            RichText(
-              textAlign: TextAlign.center,
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: "Hello! ",
-                    style: GoogleFonts.ubuntu(
-                      fontSize: headingFontSize,
-                      fontWeight: FontWeight.bold,
-                      color: themeController.textColor,
+            Flexible(
+              child: RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: "Hello! ",
+                      style: GoogleFonts.ubuntu(
+                        fontSize: headingFontSize,
+                        fontWeight: FontWeight.bold,
+                        color: themeController.textColor,
+                      ),
                     ),
-                  ),
-                  TextSpan(
-                    text: "I'm ",
-                    style: GoogleFonts.ubuntu(
-                      fontSize: headingFontSize,
-                      fontWeight: FontWeight.w500,
-                      color: themeController.textColor,
+                    TextSpan(
+                      text: "I'm ",
+                      style: GoogleFonts.ubuntu(
+                        fontSize: headingFontSize,
+                        fontWeight: FontWeight.w500,
+                        color: themeController.textColor,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-            GradientText(
-              text: "M. Aman Khan",
-              style: GoogleFonts.ubuntu(
-                fontSize: headingFontSize,
-                fontWeight: FontWeight.bold,
-              ),
-              gradient: const LinearGradient(
-                colors: [
-                  ColorResources.appMainColor,
-                  Color.fromARGB(255, 158, 89, 4),
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
+            Flexible(
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: GradientText(
+                  text: "M. Aman Khan",
+                  style: GoogleFonts.ubuntu(
+                    fontSize: headingFontSize,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  gradient: const LinearGradient(
+                    colors: [
+                      ColorResources.appMainColor,
+                      Color.fromARGB(255, 158, 89, 4),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                ),
               ),
             ),
           ],

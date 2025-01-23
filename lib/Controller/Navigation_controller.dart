@@ -1,8 +1,5 @@
-import 'package:amanportfolio/screens/Home_Screen.dart';
-import 'package:amanportfolio/screens/about_screen.dart';
-import 'package:amanportfolio/screens/contactus_screen.dart';
-import 'package:amanportfolio/screens/view_all_project.dart';
 import 'package:get/get.dart';
+import '../utils/routes/App_pages_routes.dart';
 
 class NavigationController extends GetxController {
   var activeTab = 'Home'.obs;
@@ -11,22 +8,19 @@ class NavigationController extends GetxController {
     activeTab.value = tabName;
     switch (tabName) {
       case 'Home':
-        Get.to(() => HomeScreen(), transition: Transition.fadeIn);
+        Get.toNamed(AppPages.home);
         break;
       case 'About':
-        Get.to(() => AboutScreen(), transition: Transition.fadeIn);
-        break;
-      case 'Resume':
+        Get.toNamed(AppPages.about);
         break;
       case 'Portfolio':
-        Get.to(() => ViewAllProject(), transition: Transition.fadeIn);
+        Get.toNamed(AppPages.portfolio);
         break;
       case 'Contact':
-        Get.to(() => ContactusScreen(), transition: Transition.fadeIn);
+        Get.toNamed(AppPages.contact);
         break;
       default:
         break;
     }
   }
 }
-

@@ -139,42 +139,86 @@ class ContactusProjectPage extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 30.0),
-               const Column(
+              Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      ContactWidget(
-                        textOne: 'My Address',
-                        textTwo:
-                            'Shah Faisal Colony Block 3 Karachi , Pakistan',
-                        icon: Icons.location_city,
-                      ),
-                      ContactWidget(
-                        textOne: 'My Email',
-                        textTwo: '1122khanaman@gmail.com',
-                        icon: Icons.email,
-                      ),
-                    ],
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      bool isMobile = constraints.maxWidth < 600;
+                      return isMobile
+                          ? const Column(
+                              children: [
+                                ContactWidget(
+                                  textOne: 'My Address',
+                                  textTwo:
+                                      'Shah Faisal Colony Block 3 Karachi , Pakistan',
+                                  icon: Icons.location_city,
+                                ),
+                                SizedBox(height: 20),
+                                ContactWidget(
+                                  textOne: 'My Email',
+                                  textTwo: '1122khanaman@gmail.com',
+                                  icon: Icons.email,
+                                ),
+                              ],
+                            )
+                          : const Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                ContactWidget(
+                                  textOne: 'My Address',
+                                  textTwo:
+                                      'Shah Faisal Colony Block 3 Karachi , Pakistan',
+                                  icon: Icons.location_city,
+                                ),
+                                ContactWidget(
+                                  textOne: 'My Email',
+                                  textTwo: '1122khanaman@gmail.com',
+                                  icon: Icons.email,
+                                ),
+                              ],
+                            );
+                    },
                   ),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      ContactWidget(
-                        textOne: 'My Phone Number',
-                        textTwo: '+92 312-2674-410',
-                        icon: Icons.phone,
-                      ),
-                      ContactWidget(
-                        textOne: 'My Address',
-                        textTwo:
-                            'Shah Faisal Colony Block 3 Karachi , Pakistan',
-                        icon: Icons.location_city,
-                      ),
-                    ],
+                  const SizedBox(height: 20.0),
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      bool isMobile = constraints.maxWidth <
+                          600; // Treat width < 600 as mobile
+
+                      return isMobile
+                          ? const Column(
+                              children: [
+                                ContactWidget(
+                                  textOne: 'My Phone Number',
+                                  textTwo: '+92 312-2674-410',
+                                  icon: Icons.phone,
+                                ),
+                                SizedBox(height: 20),
+                                ContactWidget(
+                                  textOne: 'My Address',
+                                  textTwo:
+                                      'Shah Faisal Colony Block 3 Karachi , Pakistan',
+                                  icon: Icons.location_city,
+                                ),
+                              ],
+                            )
+                          : const Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                ContactWidget(
+                                  textOne: 'My Phone Number',
+                                  textTwo: '+92 312-2674-410',
+                                  icon: Icons.phone,
+                                ),
+                                ContactWidget(
+                                  textOne: 'My Address',
+                                  textTwo:
+                                      'Shah Faisal Colony Block 3 skjopckspdo , Pakistan',
+                                  icon: Icons.location_city,
+                                ),
+                              ],
+                            );
+                    },
                   ),
                 ],
               ),
@@ -202,8 +246,7 @@ class ContactWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeController themeController = Get.find<ThemeController>();
     return Obx(
-      ()=>
-       Card(
+      () => Card(
         color: themeController.glassEffectColor,
         surfaceTintColor: themeController.glassEffectColor,
         elevation: 3,
@@ -230,25 +273,30 @@ class ContactWidget extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 20.0),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    textOne,
-                    style: GoogleFonts.ubuntu(
-                      color: themeController.textColor,
-                      fontSize: 14,
-                    ),
+              Flexible(
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        textOne,
+                        style: GoogleFonts.ubuntu(
+                          color: themeController.textColor,
+                          fontSize: 14,
+                        ),
+                      ),
+                      Text(
+                        textTwo,
+                        style: GoogleFonts.ubuntu(
+                          color: themeController.textColor,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
                   ),
-                  Text(
-                    textTwo,
-                    style: GoogleFonts.ubuntu(
-                      color: themeController.textColor,
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
+                ),
               ),
             ],
           ),
