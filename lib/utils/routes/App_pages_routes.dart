@@ -26,7 +26,7 @@ class AppPages {
     ),
     GetPage(
       name: resume,
-      page: () => const ResumeScreen(),
+      page: () =>  ResumeScreen(),
       transition: Transition.fadeIn,
     ),
     GetPage(
