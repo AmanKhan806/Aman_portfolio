@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../Controller/theme_controller.dart';
+import '../../../Controller/url_launcher_function.dart';
+import '../../url_text.dart';
 
 class FollowmeSection extends StatelessWidget {
   final ThemeController themeController = Get.find();
@@ -30,12 +32,19 @@ class FollowmeSection extends StatelessWidget {
           children: [
             SocialMediaButtons(
                 socialIcon: "assets/socialIcons/instagram.png",
-                onpressed: () {}),
+                onpressed: () {
+                  mylaunchURL(instagramUrl);
+                }),
             SocialMediaButtons(
                 socialIcon: "assets/socialIcons/linkedin.png",
-                onpressed: () {}),
+                onpressed: () {
+                  mylaunchURL(linkedinUrl);
+                }),
             SocialMediaButtons(
-                socialIcon: "assets/socialIcons/youtube.png", onpressed: () {})
+                socialIcon: "assets/socialIcons/youtube.png", onpressed: () 
+                {
+                  mylaunchURL(youtubeUrl);
+                })
           ],
         ),
         const SizedBox(
