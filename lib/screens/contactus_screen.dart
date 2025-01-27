@@ -5,10 +5,14 @@ import 'package:amanportfolio/utils/Colors/custom_colors.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:icon_icons/icon_icons.dart';
 import '../Controller/theme_controller.dart';
+import '../Controller/url_launcher_function.dart';
 import '../Widgets/HomeWidgets/fiveSection/five_section.dart';
+import '../Widgets/url_text.dart';
 
 class ContactusScreen extends StatelessWidget {
   final ThemeController themeController = Get.find();
@@ -152,12 +156,14 @@ class ContactusProjectPage extends StatelessWidget {
                                   textTwo:
                                       'Shah Faisal Colony Block 3 Karachi , Pakistan',
                                   icon: Icons.location_city,
+                                  iconData: false,
                                 ),
                                 SizedBox(height: 20),
                                 ContactWidget(
                                   textOne: 'My Email',
                                   textTwo: '1122khanaman@gmail.com',
                                   icon: Icons.email,
+                                  iconData: false,
                                 ),
                               ],
                             )
@@ -169,11 +175,13 @@ class ContactusProjectPage extends StatelessWidget {
                                   textTwo:
                                       'Shah Faisal Colony Block 3 Karachi , Pakistan',
                                   icon: Icons.location_city,
+                                  iconData: false,
                                 ),
                                 ContactWidget(
                                   textOne: 'My Email',
                                   textTwo: '1122khanaman@gmail.com',
                                   icon: Icons.email,
+                                  iconData: false,
                                 ),
                               ],
                             );
@@ -192,13 +200,15 @@ class ContactusProjectPage extends StatelessWidget {
                                   textOne: 'My Phone Number',
                                   textTwo: '+92 312-2674-410',
                                   icon: Icons.phone,
+                                  iconData: false,
                                 ),
                                 SizedBox(height: 20),
                                 ContactWidget(
-                                  textOne: 'My Address',
+                                  textOne: 'Social Profiles',
                                   textTwo:
-                                      'Shah Faisal Colony Block 3 Karachi , Pakistan',
-                                  icon: Icons.location_city,
+                                      '',
+                                  icon: Icons.link,
+                                  iconData: true,
                                 ),
                               ],
                             )
@@ -209,12 +219,14 @@ class ContactusProjectPage extends StatelessWidget {
                                   textOne: 'My Phone Number',
                                   textTwo: '+92 312-2674-410',
                                   icon: Icons.phone,
+                                  iconData: false,
                                 ),
                                 ContactWidget(
-                                  textOne: 'My Address',
+                                 textOne: 'Social Profiles',
                                   textTwo:
-                                      'Shah Faisal Colony Block 3 skjopckspdo , Pakistan',
-                                  icon: Icons.location_city,
+                                      '',
+                                  icon: Icons.link,
+                                  iconData: true,
                                 ),
                               ],
                             );
@@ -235,11 +247,13 @@ class ContactWidget extends StatelessWidget {
   final String textOne;
   final String textTwo;
   final IconData icon;
+  final bool? iconData;
   const ContactWidget({
     super.key,
     required this.textOne,
     required this.textTwo,
     required this.icon,
+    this.iconData,
   });
 
   @override
@@ -287,13 +301,27 @@ class ContactWidget extends StatelessWidget {
                           fontSize: 14,
                         ),
                       ),
-                      Text(
-                        textTwo,
-                        style: GoogleFonts.ubuntu(
-                          color: themeController.textColor,
-                          fontSize: 14,
-                        ),
-                      ),
+                      iconData == false
+                          ? Text(
+                              textTwo,
+                              style: GoogleFonts.ubuntu(
+                                color: themeController.textColor,
+                                fontSize: 14,
+                              ),
+                            )
+                          : Row(
+                              children: [
+                                IconIcons.facebook(),
+                                const SizedBox(width: 10.0,),
+                                IconIcons.linkedin(),
+                                const SizedBox(width: 6.0,),
+                                SvgPicture.asset(
+                                  'assets/instagram.svg',
+                                  height: 35,
+                                  width: 35,
+                                ),
+                              ],
+                            )
                     ],
                   ),
                 ),
