@@ -5,6 +5,7 @@ import 'package:amanportfolio/utils/Colors/custom_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import '../Controller/All_Section_Controller.dart';
 import '../Controller/theme_controller.dart';
 import '../Widgets/HomeWidgets/FirstSection/first_section.dart';
 import '../Widgets/HomeWidgets/FourthSection/fourth_section.dart';
@@ -14,7 +15,6 @@ import '../Widgets/HomeWidgets/ThirdSection/third_section.dart';
 class HomeScreen extends StatelessWidget {
   final ThemeController themeController = Get.put(ThemeController());
   final ScrollController _scrollController = ScrollController();
-
   HomeScreen({super.key});
 
   @override

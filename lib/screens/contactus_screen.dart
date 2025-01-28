@@ -205,8 +205,7 @@ class ContactusProjectPage extends StatelessWidget {
                                 SizedBox(height: 20),
                                 ContactWidget(
                                   textOne: 'Social Profiles',
-                                  textTwo:
-                                      '',
+                                  textTwo: '',
                                   icon: Icons.link,
                                   iconData: true,
                                 ),
@@ -222,9 +221,8 @@ class ContactusProjectPage extends StatelessWidget {
                                   iconData: false,
                                 ),
                                 ContactWidget(
-                                 textOne: 'Social Profiles',
-                                  textTwo:
-                                      '',
+                                  textOne: 'Social Profiles',
+                                  textTwo: '',
                                   icon: Icons.link,
                                   iconData: true,
                                 ),
@@ -311,15 +309,25 @@ class ContactWidget extends StatelessWidget {
                             )
                           : Row(
                               children: [
-                                IconIcons.facebook(),
-                                const SizedBox(width: 10.0,),
-                                IconIcons.linkedin(),
-                                const SizedBox(width: 6.0,),
-                                SvgPicture.asset(
+                                GestureDetector(
+                                  onTap: (){
+                                    mylaunchURL(linkedinUrl);
+                                  },
+                                  child: IconIcons.linkedin(),
+                                ),
+                                const SizedBox(
+                                  width: 6.0,
+                                ),
+                                GestureDetector(
+                                  onTap: (){
+                                    mylaunchURL(instagramUrl);
+                                  },
+                                  child: SvgPicture.asset(
                                   'assets/instagram.svg',
                                   height: 35,
                                   width: 35,
                                 ),
+                                )
                               ],
                             )
                     ],

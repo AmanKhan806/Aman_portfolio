@@ -1,3 +1,5 @@
+import 'package:amanportfolio/Controller/url_launcher_function.dart';
+import 'package:amanportfolio/Widgets/url_text.dart';
 import 'package:amanportfolio/utils/Colors/custom_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +23,9 @@ class floatingActionsbutton extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: FloatingActionButton(
-              onPressed: () {},
+              onPressed: () {
+                mylaunchURL(whatsappUrl);
+              },
               child: SvgPicture.asset(
                 "assets/whatsapp.svg",
               ),
