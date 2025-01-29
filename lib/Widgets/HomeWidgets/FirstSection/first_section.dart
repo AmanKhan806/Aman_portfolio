@@ -142,7 +142,9 @@ class FirstSection extends StatelessWidget {
                                         color: ColorResources.whiteColor,
                                       ),
                                       isbuttonShow: true,
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        mylaunchURL(cvDownloadUrl);
+                                      },
                                     ),
                                   ],
                                 ),
@@ -378,7 +380,9 @@ class FirstSection extends StatelessWidget {
                               color: ColorResources.whiteColor,
                             ),
                             isbuttonShow: true,
-                            onPressed: () {},
+                            onPressed: () {
+                              mylaunchURL(cvDownloadUrl);
+                            },
                           ),
                         ],
                       ),
