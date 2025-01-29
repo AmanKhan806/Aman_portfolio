@@ -54,9 +54,9 @@ class FollowmeSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             SocialMediaButtons(
-                socialIcon: "assets/socialIcons/twitter.png", onpressed: () {}),
-            SocialMediaButtons(
-                socialIcon: "assets/socialIcons/patreon.png", onpressed: () {}),
+                socialIcon: "assets/socialIcons/patreon.png", onpressed: () {
+                  mylaunchURL(patreonUrl);
+                }),
             GestureDetector(
               onTap: () {
                 mylaunchURL(buymeaCoffeeUrl);
