@@ -3,4 +3,4 @@ const String instagramUrl = "https://www.instagram.com/aman.khan829?igsh=MXkxdWh
 const String youtubeUrl = "https://youtube.com/@solving_code?si=q_nlImXlAfK2NlU3";
 const String whatsappUrl = "https://wa.me/qr/Q5XWSXG66KFBI1";
 const String buymeaCoffeeUrl = "https://buymeacoffee.com/1122khanamz";
-const String patreonUrl = "patreon.com/AmanKhan878";
+const String patreonUrl = "https://www.patreon.com/AmanKhan878";
